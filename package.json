@@ -10,10 +10,14 @@
     "@types/node": "^12.20.33",
     "@types/react": "^17.0.30",
     "@types/react-dom": "^17.0.9",
+    "antd": "^4.16.13",
+    "easymde": "^2.15.0",
+    "mobx": "^6.3.5",
+    "mobx-react-lite": "^3.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "typescript": "^4.4.4",
+    "react-simplemde-editor": "^5.0.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -39,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4"
   }
 }
