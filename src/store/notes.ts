@@ -8,7 +8,7 @@ export interface INote {
 }
 
 class Notes {
-  notes = [
+  notes: Array<INote> = [
     {
       id: 1,
       title: 'note 1',
@@ -24,19 +24,25 @@ class Notes {
     },
   ];
 
-  selectedNote = {};
+  selectedNote: {} | INote = {};
 
   constructor() {
     makeAutoObservable(this);
   }
 
   selectNote(note: INote) {
-    console.log(note.title);
+    console.log(note.title, note.id);
     this.selectedNote = note;
   }
 
-  addNote(note: INote) {
-    this.notes.push(note);
+  addNote() {
+    const newNote = {
+      id: Math.random() * 100,
+      title: 'New note',
+      content: '',
+      date: '20-10-2021',
+    };
+    this.notes.push(newNote);
   }
 
   deleteNote(id: number) {

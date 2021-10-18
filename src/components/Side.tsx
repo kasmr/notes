@@ -12,10 +12,11 @@ const Side = observer(() => {
           onClick={() => notes.selectNote(note)}
         >
           <h1>{note.title}</h1>
-          <p>{note.content.substring(0, 40) + '...'}</p>
-          {/* <button onClick={() => notes.deleteNote(note.id)}>Delete note</button> */}
+          <p>{note.content && note.content.substring(0, 40) + '...'}</p>
+          <button onClick={() => notes.deleteNote(note.id)}>X</button>
         </div>
       ))}
+      <button onClick={() => notes.addNote()}>Add new note</button>
     </div>
   );
 });
