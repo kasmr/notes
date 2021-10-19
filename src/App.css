@@ -15,8 +15,9 @@
   border-right: 1px solid #cfcfcf;
 }
 
-.note {
+.notes {
   width: 100%;
+  margin: 1rem;
 }
 
 .side-note {

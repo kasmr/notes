@@ -4,6 +4,7 @@ export interface INote {
   id: number;
   title: string;
   content: string;
+  isEditing: boolean;
 }
 
 const removeNote = (id: number, notes: INote[]): INote[] => {
@@ -21,11 +22,13 @@ class Store {
       title: 'note 1',
       content:
         'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam illo esse sapiente rem quas dolorem nulla ut blanditiis cumque labore',
+      isEditing: false,
     },
     {
       id: 2,
       title: 'note 2',
       content: 'lorem  ipsum',
+      isEditing: false,
     },
   ];
   selectedNote: undefined | INote;
@@ -40,6 +43,7 @@ class Store {
       id: Math.random() * 100,
       title: 'New note',
       content: 'Add content here',
+      isEditing: false,
     };
     this.notes.push(newNote);
   }
@@ -50,6 +54,10 @@ class Store {
 
   selectNote(id: number) {
     this.selectedNote = selectNote(id, this.notes);
+  }
+
+  handleEditing() {
+    store.selectedNote!.isEditing = !store.selectedNote?.isEditing;
   }
 }
 

@@ -24,8 +24,8 @@ const SideBar = observer(() => {
         >
           <h1>{note.title}</h1>
           <p>{note.content?.substring(0, 100) + '...'}</p>
-          <button onClick={() => store.removeNote(note.id)}>Delete</button>
           <ConfirmModal {...note} />
+          <button onClick={() => store.handleEditing()}>Edit</button>
         </div>
         <button onClick={() => store.addNote()}>Add new</button>
       </>
