@@ -1,5 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import notes, { INote } from '../store/notes';
+import ConfirmModal from './ConfirmModal';
+import { FormOutlined } from '@ant-design/icons';
 
 const Side = observer(() => {
   return (
@@ -9,14 +11,19 @@ const Side = observer(() => {
           className='side-note'
           tabIndex={note.id}
           key={note.id}
-          onClick={() => notes.selectNote(note)}
+          onClick={() => notes.selectNote(note.id)}
         >
           <h1>{note.title}</h1>
           <p>{note.content && note.content.substring(0, 40) + '...'}</p>
-          <button onClick={() => notes.deleteNote(note.id)}>X</button>
+          <ConfirmModal {...note} />
         </div>
       ))}
-      <button onClick={() => notes.addNote()}>Add new note</button>
+      {/* <FormOutlined
+        onClick={() => notes.addNote()}
+        style={{
+          fontSize: '3rem',
+        }}
+      /> */}
     </div>
   );
 });

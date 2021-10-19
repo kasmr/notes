@@ -24,15 +24,14 @@ class Notes {
     },
   ];
 
-  selectedNote: {} | INote = {};
+  selectedNote: INote | undefined;
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  selectNote(note: INote) {
-    console.log(note.title, note.id);
-    this.selectedNote = note;
+  selectNote(id: number) {
+    this.selectedNote = this.notes.find((item) => item.id === id);
   }
 
   addNote() {
@@ -42,18 +41,26 @@ class Notes {
       content: '',
       date: '20-10-2021',
     };
-    this.notes.push(newNote);
+    // this.notes.push(newNote);
+    const newArray = [...this.notes, newNote];
+    this.notes = newArray;
   }
 
   deleteNote(id: number) {
     this.notes = this.notes.filter((note) => note.id !== id);
   }
 
-  //   updateNote(id: number, noteContent: string) {
-  //     this.notes = this.notes.map((note) =>
-  //       note.id === id ? (note.content = noteContent) : note
-  //     );
-  //   }
+  updateNote(noteToUpdate: INote) {
+    console.log('this', noteToUpdate);
+    if (!noteToUpdate) {
+      return;
+    }
+    this.notes = this.notes.map((note) =>
+      note.id === noteToUpdate.id
+        ? { ...note, title: noteToUpdate.title, content: noteToUpdate.content }
+        : note
+    );
+  }
 }
 
 export default new Notes();

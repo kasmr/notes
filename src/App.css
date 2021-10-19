@@ -48,14 +48,18 @@
 #components-layout-demo-fixed-sider .logo {
   height: 32px;
   margin: 16px;
-  background: rgba(226, 5, 5, 0.2);
+  background: rgb(141, 45, 45);
 }
 
 .site-layout .site-layout-background {
   background: #fff;
 }
 
+/* MDE */
+
 .EasyMDEContainer .CodeMirror {
   padding: 0 !important;
   border: none !important;
 }
+
+/* ANTD */
