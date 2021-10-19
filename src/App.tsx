@@ -1,17 +1,13 @@
 import './App.css';
-import AddNote from './components/AddNote';
-import NewSide from './components/NewSide';
-import Notes from './components/Notes';
-import Side from './components/Side';
-import notes from './store/notes';
+import Search from './components/Search';
+import NotesMDE from './components/NotesMDE';
+import SideBar from './components/SideBar';
 
 function App() {
   return (
     <div className='App'>
-      {/* <Side />
-      <Notes {...notes} /> */}
-      <NewSide />
-      <AddNote />
+      <SideBar />
+      <NotesMDE />
     </div>
   );
 }

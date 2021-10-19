@@ -1,9 +1,10 @@
-import { Modal, Button } from 'antd';
+import { Modal } from 'antd';
 import { CloseCircleOutlined, DeleteOutlined } from '@ant-design/icons';
-import notes from '../store/notes';
+import store from '../store/store';
 
 interface Props {
   id: number;
+  title: string;
 }
 
 const ConfirmModal = (props: Props) => {
@@ -19,11 +20,11 @@ const ConfirmModal = (props: Props) => {
           }}
         />
       ),
-      content: 'Some descriptions',
+      content: props.title,
       okType: 'danger',
       okText: 'Delete',
       onOk() {
-        notes.deleteNote(props.id);
+        store.removeNote(props.id);
       },
     });
   }
