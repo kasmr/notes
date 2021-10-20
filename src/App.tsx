@@ -1,5 +1,5 @@
 import './App.css';
-import Search from './components/Search';
+import AddButton from './components/AddButton';
 import Notes from './components/Notes';
 import SideBar from './components/SideBar';
 
@@ -8,6 +8,7 @@ function App() {
     <div className='App'>
       <SideBar />
       <Notes />
+      <AddButton />
     </div>
   );
 }

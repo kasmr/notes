@@ -22,7 +22,7 @@ const Notes = observer(() => {
     };
   }, []);
 
-  const onTitleChange = useCallback((e: any) => {
+  const onTitleChange = useCallback((e: string) => {
     if (!store.selectedNote) {
       return;
     }
@@ -39,13 +39,16 @@ const Notes = observer(() => {
   if (!store.selectedNote) {
     return (
       <div className='notes'>
-        <h1>To begin please select note</h1>
+        <h1>To begin please select the note</h1>
       </div>
     );
   }
 
   return (
     <div className='notes'>
+      <span>
+        <p>{store.selectedNote.date}</p>
+      </span>
       {store.selectedNote.isEditing ? (
         <>
           <div>

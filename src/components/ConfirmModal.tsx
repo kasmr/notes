@@ -29,14 +29,7 @@ const ConfirmModal = (props: Props) => {
     });
   }
 
-  return (
-    <DeleteOutlined
-      onClick={showConfirm}
-      style={{
-        fontSize: '1.8rem',
-      }}
-    />
-  );
+  return <DeleteOutlined onClick={showConfirm} />;
 };
 
 export default ConfirmModal;

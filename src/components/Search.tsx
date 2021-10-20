@@ -1,16 +1,14 @@
-import React from 'react';
 import store from '../store/store';
+import { Input } from 'antd';
 
 const Search = () => {
   return (
-    <input
+    <Input.Search
       type='text'
       value={store.search}
-      onChange={(e) => (
-        console.log(store.search, e.target.value),
-        (store.search = e.target.value)
-      )}
-    ></input>
+      onChange={(e) => (store.search = e.target.value)}
+      style={{ width: '101%' }}
+    />
   );
 };
 

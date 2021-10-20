@@ -4,30 +4,39 @@ export interface INote {
   id: number;
   title: string;
   content: string;
+  date: string;
   isEditing: boolean;
 }
 
-const removeNote = (id: number, notes: INote[]): INote[] => {
+const handleRemoveNote = (id: number, notes: INote[]): INote[] => {
   return notes.filter((note) => note.id !== id);
 };
 
-const selectNote = (id: number, notes: INote[]): INote | undefined => {
+const handleSelectNote = (id: number, notes: INote[]): INote | undefined => {
   return notes.find((note) => note.id === id);
+};
+
+const getDate = () => {
+  const date = new Date().toLocaleString();
+
+  return date;
 };
 
 class Store {
   notes: INote[] = [
     {
-      id: 1,
+      id: Math.random() * 100,
       title: 'note 1',
       content:
         'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam illo esse sapiente rem quas dolorem nulla ut blanditiis cumque labore',
+      date: '01/10/2021',
       isEditing: false,
     },
     {
-      id: 2,
+      id: Math.random() * 100,
       title: 'note 2',
       content: 'lorem  ipsum',
+      date: '01/10/2018',
       isEditing: false,
     },
   ];
@@ -42,21 +51,26 @@ class Store {
     const newNote = {
       id: Math.random() * 100,
       title: 'New note',
-      content: 'Add content here',
-      isEditing: false,
+      content: '',
+      date: getDate(),
+      isEditing: true,
     };
     this.notes.push(newNote);
+    this.selectedNote = handleSelectNote(newNote.id, this.notes);
   }
 
   removeNote(id: number) {
-    this.notes = removeNote(id, this.notes);
+    this.notes = handleRemoveNote(id, this.notes);
   }
 
   selectNote(id: number) {
-    this.selectedNote = selectNote(id, this.notes);
+    this.selectedNote = handleSelectNote(id, this.notes);
   }
 
   handleEditing() {
+    if (!store.selectedNote) {
+      return;
+    }
     store.selectedNote!.isEditing = !store.selectedNote?.isEditing;
   }
 }
